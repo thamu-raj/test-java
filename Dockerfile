@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # ---------- Stage 1: build with Maven ----------
-FROM maven:3.9.9-eclipse-temurin-17 AS build
+FROM public.ecr.aws/docker/library/maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /workspace
 
 # Cache dependencies first for faster rebuilds
@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn -B -q clean package -DskipTests=false
 
 # ---------- Stage 2: minimal runtime image ----------
-FROM eclipse-temurin:17-jre-alpine AS runtime
+FROM public.ecr.aws/docker/library/eclipse-temurin:17-jre-alpine AS runtime
 
 ENV APP_HOME=/app \
     JAVA_OPTS=""
