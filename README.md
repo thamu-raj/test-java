@@ -47,3 +47,4 @@ A GitHub Actions workflow is provided in `.github/workflows/ci.yml` that:
 2. Runs `mvn clean verify` (compile + tests).
 3. Executes the resulting JAR.
 4. Uploads the built JAR as a workflow artifact.
+
